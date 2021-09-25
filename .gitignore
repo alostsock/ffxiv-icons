@@ -1,4 +1,5 @@
 node_modules/
 **.log
 
+index-dev.html
 icons*.zip

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import ejs from 'ejs';
 
-const [doShuffle] = process.argv.slice(2);
+const isDev = process.env.NODE_ENV === "development"
 
 function getFiles(dir) {
     return fs.readdirSync(dir).map (f => `/${dir}/${f}`);
@@ -9,7 +9,7 @@ function getFiles(dir) {
 
 // helps pick up heterogeneity in sizing/positioning during testing
 function shuffle(arr) {
-  if (doShuffle) {
+  if (isDev) {
     for (let current = 0; current < arr.length; current++) {
       const random = Math.floor(Math.random() * current);
       [arr[current], arr[random]] = [arr[random], arr[current]];
@@ -27,10 +27,12 @@ const role = shuffle(getFiles('icons/role'));
 
 const data = { ...job, role };
 
+const outFile = isDev ? 'index-dev.html' : 'index.html';
+
 ejs.renderFile('build/index.ejs', data, { root: '.'}, (err, html) => {
     if (err) {
         throw Error(err);
     } else {
-        fs.writeFileSync('index.html', html);
+        fs.writeFileSync(outFile, html);
     }
 });

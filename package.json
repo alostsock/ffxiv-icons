@@ -10,6 +10,6 @@
   },
   "scripts": {
     "build": "node build/build.js && rm \"icons_$npm_package_version.zip\" && cd icons && zip -r9 \"../icons_$npm_package_version.zip\" *",
-    "build:dev": "node build/build.js shuffle"
+    "build:dev": "NODE_ENV=development node build/build.js"
   }
 }
