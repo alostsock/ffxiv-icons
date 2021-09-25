@@ -1,0 +1,14 @@
+{
+  "name": "ffxiv-icons",
+  "version": "1.0.0",
+  "repository": "git@github.com:alostsock/ffxiv-icons.git",
+  "author": "alostsock",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "ejs": "^3.1.6"
+  },
+  "scripts": {
+    "build": "node build/build.js && zip -r9 icons.zip icons"
+  }
+}
