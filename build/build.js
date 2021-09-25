@@ -1,15 +1,19 @@
 import fs from 'fs';
 import ejs from 'ejs';
 
+const [doShuffle] = process.argv.slice(2);
+
 function getFiles(dir) {
     return fs.readdirSync(dir).map (f => `/${dir}/${f}`);
 }
 
-// helps pick up heterogeneity in sizing/positioning
+// helps pick up heterogeneity in sizing/positioning during testing
 function shuffle(arr) {
-  for (let current = 0; current < arr.length; current++) {
-    const random = Math.floor(Math.random() * current);
-    [arr[current], arr[random]] = [arr[random], arr[current]];
+  if (doShuffle) {
+    for (let current = 0; current < arr.length; current++) {
+      const random = Math.floor(Math.random() * current);
+      [arr[current], arr[random]] = [arr[random], arr[current]];
+    }
   }
   return arr;
 }

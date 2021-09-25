@@ -9,6 +9,7 @@
     "ejs": "^3.1.6"
   },
   "scripts": {
-    "build": "node build/build.js && zip -r9 icons.zip icons"
+    "build": "node build/build.js && rm \"icons_$npm_package_version.zip\" && cd icons && zip -r9 \"../icons_$npm_package_version.zip\" *",
+    "build:dev": "node build/build.js shuffle"
   }
 }
