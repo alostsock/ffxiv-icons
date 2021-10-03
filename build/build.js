@@ -25,7 +25,9 @@ for (const type of ['healer', 'tank', 'melee', 'ranged', 'caster', 'limited']) {
 
 const role = shuffle(getFiles('icons/role'));
 
-const data = { ...job, role };
+const misc = shuffle(getFiles('icons/misc'));
+
+const data = { ...job, role, misc };
 
 const outFile = isDev ? 'index-dev.html' : 'index.html';
 
