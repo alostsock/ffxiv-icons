@@ -6,10 +6,12 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "ejs": "^3.1.6"
+    "ejs": "^3.1.6",
+    "svgo": "^2.7.0"
   },
   "scripts": {
-    "build": "node build/build.js && rm \"icons_$npm_package_version.zip\" && cd icons && zip -r9 \"../icons_$npm_package_version.zip\" *",
+    "optimize": "yarn svgo -rf ./icons -o ./output && rm -rf ./icons && mv ./output ./icons",
+    "build": "yarn optimize && node build/build.js && rm \"icons_$npm_package_version.zip\" && cd icons && zip -r9 \"../icons_$npm_package_version.zip\" *",
     "build:dev": "NODE_ENV=development node build/build.js"
   }
 }
