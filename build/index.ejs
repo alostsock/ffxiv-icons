@@ -32,6 +32,10 @@
       height: 100%;
     }
 
+    .icons.round .icon {
+      border-radius: 50%;
+    }
+
     .icons.small .icon {
       width: 2rem;
       height: 2rem;
@@ -74,6 +78,11 @@
 
   <h2>with CSS:</h2>
   <div class="icons medium style1">
+    <%- include("/build/icons") -%>
+  </div>
+
+  <h2>circular background:</h2>
+  <div class="icons medium style1 round">
     <%- include("/build/icons") -%>
   </div>
 </body>
